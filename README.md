@@ -1,37 +1,59 @@
-## Welcome to GitHub Pages
+# Portal for IBM @ GitHub
 
-You can use the [editor on GitHub](https://github.com/AliHajiKhaluie/AliHajiKhaluie.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+This repository is rendered online at [http://ibm.github.io](http://ibm.github.io), it contains a listing of repositories that are open source and maintained by IBM teams.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Adding a new repo to the listing
 
-### Markdown
+In order to have your repository show up at [http://ibm.github.io](http://ibm.github.io), a minor change to [orgs.js](orgs.js) is required.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+* To add a single repository add a new entry to [orgs.js](orgs.js), specify the Github organization name and the repository name (separate them with a `/`), and set the `type` to `repo`, an example can be seen below:
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```
+  {
+      "name": "RuntimeTools/appmetrics",
+      "type": "repo"
+  }
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+* To add all the repositories in a Github organization add a new entry to [orgs.js](orgs.js), specify the Github organization name, and set the `type` to `org`, an example can be seen below:
 
-### Jekyll Themes
+```
+  {
+      "name": "IBMResilient",
+      "type": "org"
+  }
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/AliHajiKhaluie/AliHajiKhaluie.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### To test changes locally
 
-### Support or Contact
+From within the top level folder of the cloned repository run:
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+```
+$ python -m http.server {port}
+```
+
+For example: `python -m http.server 8000` -> Open the following URL in a browser:
+
+```
+http://localhost:8000/
+```
+
+### Quick Git tutorial
+
+1. Clone the repository and checkout a new branch
+
+```
+$ git clone https://github.com/IBM/ibm.github.io
+$ git checkout -b branch_name
+```
+
+2. Update the files you'd like to change
+3. Push the changes upstream
+
+```
+$ git add file1 file2
+$ git commit -m "add your commit message here"
+$ git push origin branch_name
+```
+
+4. View your branch in Github and create a Pull Request
